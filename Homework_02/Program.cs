@@ -3,7 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+/*
+Решил сделать домашнюю работу с "красотой". В телеграмме коллега скинул фотку менюшки,
+и я решил сделать также. Времени потратил много, но меня успокаивает, 
+что я смогу этот код использовать и в других проектах.
+Для менюшки написал отдельный метод MakeForm, где перечислены задачи.
+Для того, чтобы каждый раз не описывать расположение текстов, 
+сделал еще пару вспомогательных методов.
+При вводе цифры из главного меню, программа переключается на соответствующий метод.
+При выборе 0 - завершает программу.
+ */
 namespace Homework_02
 {
     internal class Program
@@ -19,8 +28,11 @@ namespace Homework_02
             while (f)
             {
                 Console.Clear();
+                //Отрисовка формы
                 MakeForm();
                 string taskNum = Console.ReadLine();
+
+                //Свичер по задачам
                 switch (taskNum)
                 {
                     case "1":
@@ -61,7 +73,9 @@ namespace Homework_02
             }
         }
 
-
+        /// <summary>
+        /// Непосредственно метод отрисовки формы
+        /// </summary>
         static void MakeForm()
         {
             Console.ForegroundColor = ConsoleColor.Green;
@@ -98,15 +112,29 @@ namespace Homework_02
             Console.SetCursorPosition(Console.WindowWidth / 2, y);
 
         }
+        /// <summary>
+        /// Метод вывода строк по центру консоли
+        /// </summary>
+        /// <param name="str">Строка, которую нужно вывести по центру</param>
+        /// <param name="y">Высота строки</param>
         static void MakeCenterOutput(string str, int y)
         {
             Console.SetCursorPosition(CenterX(str), y);
             Console.WriteLine(str);
         }
+        /// <summary>
+        /// Рассчет курсора, для того, чтобы текст располагался строго по центру
+        /// </summary>
+        /// <param name="str">Текст, для которого необходимо произвести рассчет курсора</param>
+        /// <returns></returns>
         static int CenterX(string str)
         {
             return (Console.WindowWidth / 2) - (str.Length / 2);
         }
+
+        /// <summary>
+        /// Метод, сравнивающий три числа и находящий минимальное за два сравнения 
+        /// </summary>
         static void CompareTreeNumbers()
         {
             Console.Clear();
@@ -166,6 +194,9 @@ namespace Homework_02
             Console.ReadLine();
 
         }
+        /// <summary>
+        /// Метод находящий количество цифр, из которых складыввается число.
+        /// </summary>
         static void NumberOfDigits()
         {
             Console.Clear();
@@ -196,7 +227,9 @@ namespace Homework_02
             MakeCenterOutput(str, y);
             Console.ReadLine();
         }
-
+        /// <summary>
+        /// Метод для подсчета суммы введенных положительныйх нечетных чисел.
+        /// </summary>
         static void EvenCounter() {
             Console.Clear();
             string str = "Бабенко Глеб";
@@ -239,7 +272,9 @@ namespace Homework_02
             MakeCenterOutput(str, y);
             Console.ReadLine();
         }
-
+        /// <summary>
+        /// Метод проверяющий логин-пароль для входа в систему дается 3 попытки.
+        /// </summary>
         static void LogIn()
         {
             Console.Clear();
@@ -332,7 +367,12 @@ namespace Homework_02
             
 
         }
-
+        /// <summary>
+        /// Вспопогательный метод, проверяющий корректность данных пользователя.
+        /// </summary>
+        /// <param name="login">введенный логин</param>
+        /// <param name="password">введенный пароль</</param>
+        /// <returns></returns>
         static bool ChekPass(string login, string password)
         {
 
@@ -345,7 +385,10 @@ namespace Homework_02
                 return false;
             }
         }
-
+        /// <summary>
+        /// Метод, рассчитывающий индекс массы тела и дающий рекомендацию
+        /// для приведения его в норму
+        /// </summary>
         static void IMS()
         {
             Console.Clear();
@@ -413,6 +456,9 @@ namespace Homework_02
             System.Console.Clear();
 
         }
+        /// <summary>
+        /// метод подсчета "Хороших" чисел по условию и замер времени выполнения этой подзадачи.
+        /// </summary>
         static void GoodDigets()
         {
             Console.Clear();
@@ -450,15 +496,10 @@ namespace Homework_02
                     s = s + a % 10;
                     a = a / 10;
                 }
-                //Console.WriteLine(i.ToString());
-                //Console.WriteLine(s);
                 if (i % s == 0)
                 {
                     counter++;
                 }
-                
-
-
             }
             y = 15;
             str = $"Найдено {counter} \"Хороших\" числа";
@@ -473,7 +514,9 @@ namespace Homework_02
             Console.SetCursorPosition(Console.WindowWidth / 2, y);
             Console.ReadLine();
         }
-        
+        /// <summary>
+        /// Метод для рекурсивного вывода значений и подсчета суммы ряда (также рекурсивно, по условию).
+        /// </summary>
         static void recur()
         {
             Console.Clear();
@@ -506,8 +549,15 @@ namespace Homework_02
 
             str = $"Сумма чисел от {a} до {b} равна {sum}";
             Console.WriteLine(str);
+            Console.WriteLine("Нажмите Enter для завершения подпрограммы.");
             Console.ReadLine();
         }
+        /// <summary>
+        /// Два вспомогательных метода в которых и реализован рекурсивный подход.
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         static bool recur_a(int a, int b)
         {
             while(true)
